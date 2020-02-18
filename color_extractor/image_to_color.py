@@ -32,10 +32,13 @@ class ImageToColor(Task):
         centers = self._selector.get(k, labels, clusters_centers)
         colors = [self._name.get(c) for c in centers]
         flattened = list({c for l in colors for c in l})
+        #print(centers)
         print(colors)
-        print(flattened)
+        #print(flattened)
+        '''
         if self._settings['debug'] is None:
             return flattened
+        '''
 
         colored_labels = np.zeros((labels.shape[0], 3), np.float64)
         for i, c in enumerate(clusters_centers):
@@ -57,7 +60,8 @@ class ImageToColor(Task):
             'resize': {},
             'back': {},
             'skin': {},
-            'cluster': {},
+            'cluster': {'strategy':'ratio', 'ratio.threshold':0.1},
             'selector': {},
-            'name': {},
+            'name': {}
+            
         }
