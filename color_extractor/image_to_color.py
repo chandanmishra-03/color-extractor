@@ -32,7 +32,8 @@ class ImageToColor(Task):
         centers = self._selector.get(k, labels, clusters_centers)
         colors = [self._name.get(c) for c in centers]
         flattened = list({c for l in colors for c in l})
-
+        print(colors)
+        print(flattened)
         if self._settings['debug'] is None:
             return flattened
 
